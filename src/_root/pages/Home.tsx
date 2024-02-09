@@ -1,8 +1,7 @@
 import Loader from '@/components/shared/Loader';
-import { getRecentPosts } from '@/lib/appwrite/api';
+import PostCard from '@/components/shared/PostCard';
 import { useGetRecentPosts } from '@/lib/react-query/queriesAndMutation';
 import { Models } from 'appwrite';
-import { useEffect } from 'react';
 
 const Home = () => {
     // const isPostLoading = true;
@@ -29,7 +28,7 @@ const Home = () => {
                     ) : (
                         <ul className="flex flex-col flex-1 gap-9 w-full">
                             {posts?.documents.map((post: Models.Document) => (
-                                <li>{post.caption}</li>
+                                <PostCard post={post} key={post.caption} />
                             ))}
                         </ul>
                     )}
